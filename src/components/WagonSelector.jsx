@@ -30,17 +30,22 @@ export default function WagonSelector({ wagons }) {
               onClick={() => setSelectedWagon(wagon)}
               id={`wagon-tab-${wagon.id}`}
             >
+              {/* Іконка зліва */}
               <span className={styles.wagonIcon}>
                 {WAGON_ICONS[wagon.type] || "🚃"}
               </span>
+
+              {/* Текстовий блок: назва + рядок з номером і бейджем */}
               <span className={styles.wagonInfo}>
                 <span className={styles.wagonType}>{wagon.type}</span>
-                <span className={styles.wagonNum}>Вагон {wagon.id}</span>
-              </span>
-              <span
-                className={`${styles.freeCount} ${freeCount < 5 ? styles.fewLeft : ""}`}
-              >
-                {freeCount} вільних
+                <span className={styles.wagonMeta}>
+                  <span className={styles.wagonNum}>Вагон {wagon.id}</span>
+                  <span
+                    className={`${styles.freeCount} ${freeCount < 5 ? styles.fewLeft : ""}`}
+                  >
+                    {freeCount} вільних
+                  </span>
+                </span>
               </span>
             </button>
           );

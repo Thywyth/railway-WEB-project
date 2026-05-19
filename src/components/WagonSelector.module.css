@@ -13,25 +13,30 @@
   margin: 0 0 1rem 0;
 }
 
+/* ── Сітка вагонів ── */
 .tabs {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 0.65rem;
 }
 
+/* Кожна картка:
+   - flex: 1 1 140px  → рівномірно розтягуються, мінімум 140px
+   - без overflow:hidden на самій картці — все вміщується всередині */
 .tab {
+  flex: 1 1 140px;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.55rem;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
-  padding: 0.75rem 1rem;
+  padding: 0.65rem 0.8rem;
   cursor: pointer;
   transition: all 0.2s ease;
   color: #c8d4e8;
-  min-width: 160px;
-  flex: 1;
+  box-sizing: border-box;
+  text-align: left;
 }
 
 .tab:hover {
@@ -41,51 +46,84 @@
 }
 
 .tab.active {
-  background: linear-gradient(135deg, rgba(255, 200, 0, 0.15), rgba(255, 149, 0, 0.1));
+  background: linear-gradient(
+    135deg,
+    rgba(255, 200, 0, 0.15),
+    rgba(255, 149, 0, 0.1)
+  );
   border-color: #ffc800;
   box-shadow: 0 4px 15px rgba(255, 200, 0, 0.15);
 }
 
+/* ── Іконка ── */
 .wagonIcon {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  line-height: 1;
 }
 
+/* ── Блок тексту (займає залишок ширини) ── */
 .wagonInfo {
+  flex: 1 1 auto;
+  min-width: 0;              /* дозволяє стискатися до нуля */
   display: flex;
   flex-direction: column;
-  gap: 0.15rem;
-  flex: 1;
-  text-align: left;
+  gap: 0.25rem;
 }
 
+/* Рядок 1: тип вагона — займає всю ширину, не переноситься */
 .wagonType {
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   color: #e8eaf0;
+  white-space: nowrap;       /* не переноситься */
+  overflow: hidden;
+  text-overflow: ellipsis;   /* обрізати тільки якщо зовсім тісно */
 }
 
+/* Рядок 2: "Вагон N" + бейдж поряд */
+.wagonMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+}
+
+/* "Вагон N" — фіксовано в один рядок */
 .wagonNum {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   color: #6a7f9a;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
+/* Бейдж кількості місць — у другому рядку, завжди вміщується */
 .freeCount {
-  font-size: 0.78rem;
-  font-weight: 600;
+  font-size: 0.7rem;
+  font-weight: 700;
   color: #4caf50;
-  background: rgba(76, 175, 80, 0.12);
-  padding: 0.2rem 0.5rem;
+  background: rgba(76, 175, 80, 0.14);
+  border: 1px solid rgba(76, 175, 80, 0.25);
+  padding: 0.15rem 0.4rem;
   border-radius: 20px;
   white-space: nowrap;
+  flex-shrink: 0;
+  line-height: 1.3;
 }
 
 .fewLeft {
   color: #ff6b6b;
-  background: rgba(255, 107, 107, 0.12);
+  background: rgba(255, 107, 107, 0.14);
+  border-color: rgba(255, 107, 107, 0.25);
 }
 
-@media (max-width: 600px) {
+/* ── Адаптивність ── */
+@media (max-width: 540px) {
+  .tabs {
+    flex-direction: column;
+  }
+
   .tab {
-    min-width: 100%;
+    flex: 1 1 100%;
   }
 }
