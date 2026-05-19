@@ -1,0 +1,202 @@
+.page {
+  min-height: 100vh;
+}
+
+/* ── Hero ── */
+.hero {
+  background: linear-gradient(160deg, #0d1b2e 0%, #0a1628 40%, #111d35 100%);
+  padding: 4rem 1.5rem 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 20% 60%, rgba(255, 200, 0, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(21, 101, 192, 0.1) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.heroContent {
+  max-width: 700px;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+  position: relative;
+}
+
+.heroBadge {
+  display: inline-block;
+  background: rgba(255, 200, 0, 0.12);
+  border: 1px solid rgba(255, 200, 0, 0.25);
+  color: #ffc800;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.35rem 1rem;
+  border-radius: 20px;
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.05em;
+}
+
+.heroTitle {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 900;
+  color: #ffffff;
+  margin: 0 0 0.75rem;
+  line-height: 1.15;
+}
+
+.heroAccent {
+  color: #ffc800;
+  display: inline;
+}
+
+.heroSubtitle {
+  font-size: 1.05rem;
+  color: #8fa0bc;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ── Search panel ── */
+.searchPanel {
+  max-width: 900px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+}
+
+.searchRow {
+  width: 100%;
+}
+
+.searchField {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 1rem;
+  font-size: 1rem;
+  pointer-events: none;
+}
+
+.searchInput {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 0.85rem 1rem 0.85rem 2.75rem;
+  font-size: 1rem;
+  color: #e8eaf0;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.searchInput::placeholder {
+  color: #4a5a72;
+}
+
+.searchInput:focus {
+  border-color: #ffc800;
+  box-shadow: 0 0 0 3px rgba(255, 200, 0, 0.1);
+}
+
+.filtersRow {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.select,
+.dateInput {
+  flex: 1;
+  min-width: 140px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  color: #c8d4e8;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  font-family: inherit;
+  appearance: none;
+}
+
+.select option {
+  background: #1a2a4a;
+  color: #e8eaf0;
+}
+
+.select:focus,
+.dateInput:focus {
+  border-color: #ffc800;
+  box-shadow: 0 0 0 3px rgba(255, 200, 0, 0.1);
+}
+
+.dateInput::-webkit-calendar-picker-indicator {
+  filter: invert(0.7);
+}
+
+.resetBtn {
+  background: rgba(239, 83, 80, 0.15);
+  border: 1px solid rgba(239, 83, 80, 0.3);
+  border-radius: 12px;
+  padding: 0.75rem 1.1rem;
+  color: #ef9a9a;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+  font-family: inherit;
+}
+
+.resetBtn:hover {
+  background: rgba(239, 83, 80, 0.25);
+  transform: translateY(-1px);
+}
+
+/* ── List section ── */
+.listSection {
+  padding: 2.5rem 1.5rem;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .hero {
+    padding: 2.5rem 1rem 2rem;
+  }
+
+  .searchPanel {
+    padding: 1rem;
+  }
+
+  .filtersRow {
+    flex-direction: column;
+  }
+
+  .select,
+  .dateInput {
+    min-width: 100%;
+  }
+}
