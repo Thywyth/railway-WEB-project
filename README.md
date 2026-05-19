@@ -1,16 +1,107 @@
-# React + Vite
+# 🚂 УкрЗалізниця — Railway Ticket Booking System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Повноцінний React-застосунок для пошуку та бронювання залізничних квитків, реалізований у рамках Лабораторних робіт 9 та 10 з дисципліни «Веб-програмування на стороні клієнта».
 
-Currently, two official plugins are available:
+## 🖥️ Технічний стек
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+| Технологія | Версія | Призначення |
+|---|---|---|
+| React | 18+ | UI-бібліотека |
+| Vite | 6+ | Збірник проєкту |
+| react-router-dom | 7+ | Клієнтська маршрутизація |
+| react-toastify | 11+ | Toast-сповіщення |
+| CSS Modules | — | Ізольована стилізація |
+| useContext | — | Глобальний стан |
+| localStorage | — | Персистентність даних |
 
-## React Compiler
+## 🚀 Запуск проєкту
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Передумови
+- Node.js LTS (18 або 20+)
+- npm 9+
 
-## Expanding the ESLint configuration
+### Встановлення та запуск
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+# Клонувати репозиторій
+git clone <your-github-url>
+cd railway-WEB-project
+
+# Встановити залежності
+npm install
+
+# Запустити dev-сервер
+npm run dev
+```
+
+Застосунок буде доступний за адресою: **http://localhost:5173**
+
+### Production збірка
+
+```bash
+npm run build
+npm run preview
+```
+
+## 📁 Структура проєкту
+
+```
+src/
+├── components/
+│   ├── TrainCard.jsx          # Картка потяга з маршрутом і кнопкою вибору
+│   ├── TrainCard.module.css
+│   ├── TrainList.jsx          # Список карток з empty-state
+│   ├── TrainList.module.css
+│   ├── WagonSelector.jsx      # Таби для вибору вагона
+│   ├── WagonSelector.module.css
+│   ├── SeatMap.jsx            # Інтерактивна схема місць
+│   ├── SeatMap.module.css
+│   ├── BookingForm.jsx        # Форма пасажира з валідацією
+│   └── BookingForm.module.css
+├── context/
+│   └── BookingContext.jsx     # Глобальний стан бронювання
+├── data/
+│   └── trains.js              # Мок-дані потягів (8 маршрутів)
+├── pages/
+│   ├── Home.jsx               # Головна: пошук і список рейсів
+│   ├── Home.module.css
+│   ├── Booking.jsx            # Сторінка бронювання
+│   └── Booking.module.css
+├── services/
+│   └── BookingService.js      # CRUD з localStorage
+├── App.jsx                    # Роутинг і провайдери
+└── main.jsx                   # Точка входу
+```
+
+## ✨ Функціонал
+
+### Лабораторна 9 — Список потягів
+- 📋 **8 рейсів** по всій Україні з детальною інформацією
+- 🔍 **Пошук** за номером потяга, містом відправлення/прибуття
+- 🗂️ **Фільтри** за містом відправлення, містом призначення та датою
+- 📊 **Лічильник** вільних місць на кожному рейсі
+- ♿ Семантична HTML-розмітка та ARIA-атрибути
+
+### Лабораторна 10 — Бронювання місць
+- 🚃 **WagonSelector** — вибір вагона (Купе, Плацкарт, СВ, Люкс)
+- 💺 **SeatMap** — інтерактивна сітка місць із кольоровим кодуванням:
+  - 🟢 Вільне — можна вибрати
+  - 🔵 Обране — пульсуюча анімація
+  - 🔴 Зайняте — недоступне
+- 📝 **BookingForm** — валідація ім'я, телефону та email
+- 💰 **Підсумок вартості** перед бронюванням
+- 🔔 **Toast-сповіщення** при успішному бронюванні
+- 💾 **localStorage** — збереження всіх бронювань
+
+## 🎨 Дизайн
+
+- Темна кольорова схема у залізничному стилі (темно-сині тони, жовтий акцент #FFC800)
+- Glassmorphism-ефекти для пошукової панелі
+- Hover-ефекти та micro-animations на картках і кнопках
+- Повністю адаптивний (mobile-first)
+
+## 👤 Автор
+
+Студент(ка) групи ___
+Дисципліна: Веб-програмування на стороні клієнта
+Лабораторні роботи 9–10
