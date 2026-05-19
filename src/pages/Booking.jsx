@@ -10,8 +10,7 @@ import styles from "./Booking.module.css";
 export default function Booking() {
   const { trainId } = useParams();
   const navigate = useNavigate();
-  const { setSelectedTrain, setSelectedWagon, selectedSeats, clearBooking } =
-    useBooking();
+  const { setSelectedTrain, setSelectedWagon, clearBooking } = useBooking();
 
   const train = trains.find((t) => t.id === Number(trainId));
 
@@ -22,10 +21,9 @@ export default function Booking() {
     } else {
       navigate("/");
     }
-    return () => {
-      // don't clear on unmount — keep state between re-renders
-    };
-  }, [train, setSelectedTrain, setSelectedWagon, navigate]);
+    // Clear selected seats when leaving booking page
+    return () => clearBooking();
+  }, [trainId]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!train) return null;
 
