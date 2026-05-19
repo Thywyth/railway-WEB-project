@@ -1,0 +1,225 @@
+.card {
+  background: linear-gradient(135deg, #1a2a4a 0%, #162038 100%);
+  border: 1px solid rgba(255, 200, 0, 0.15);
+  border-radius: 16px;
+  padding: 1.5rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #ffc800, #ff9500);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 200, 0, 0.3);
+  border-color: rgba(255, 200, 0, 0.3);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+/* Train badge */
+.trainBadge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.trainIcon {
+  font-size: 1.4rem;
+}
+
+.trainNumber {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffc800;
+  letter-spacing: 0.05em;
+  font-family: "Courier New", monospace;
+}
+
+/* Route section */
+.routeSection {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.city {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 80px;
+}
+
+.cityRight {
+  align-items: flex-end;
+}
+
+.cityName {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #e8eaf0;
+}
+
+.time {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  font-variant-numeric: tabular-nums;
+}
+
+.routeArrow {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  position: relative;
+}
+
+.arrowLine {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ffc800 40%, #ffc800 60%, transparent);
+}
+
+.duration {
+  font-size: 0.75rem;
+  color: #8fa0bc;
+  white-space: nowrap;
+}
+
+.arrowHead {
+  font-size: 0.8rem;
+  color: #ffc800;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Meta row */
+.metaRow {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 10px;
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  flex: 1;
+  min-width: 80px;
+}
+
+.metaLabel {
+  font-size: 0.7rem;
+  color: #6a7f9a;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.metaValue {
+  font-size: 0.85rem;
+  color: #c8d4e8;
+  font-weight: 500;
+}
+
+.lowSeats {
+  color: #ff6b6b !important;
+  font-weight: 700;
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.priceBlock {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+}
+
+.priceLabel {
+  font-size: 0.8rem;
+  color: #6a7f9a;
+}
+
+.price {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #ffc800;
+}
+
+.btn {
+  background: linear-gradient(135deg, #ffc800, #ff9500);
+  color: #0d1b2e;
+  border: none;
+  border-radius: 10px;
+  padding: 0.65rem 1.3rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 200, 0, 0.4);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 1rem;
+  }
+
+  .time {
+    font-size: 1.2rem;
+  }
+
+  .routeSection {
+    gap: 0.5rem;
+  }
+
+  .footer {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: stretch;
+  }
+
+  .btn {
+    text-align: center;
+  }
+
+  .metaRow {
+    gap: 0.5rem;
+  }
+}
