@@ -1,107 +1,120 @@
-# 🚂 УкрЗалізниця — Railway Ticket Booking System
+# 🚂 Ukrzaliznytsia — Railway Ticket Booking System
 
-Повноцінний React-застосунок для пошуку та бронювання залізничних квитків, реалізований у рамках Лабораторних робіт 9 та 10 з дисципліни «Веб-програмування на стороні клієнта».
+A full-featured, responsive React application designed for searching, filtering, and booking train tickets across Ukraine. This project demonstrates production-ready state management, client-side routing, and complex interactive UI components.
 
-## 🖥️ Технічний стек
+---
 
-| Технологія | Версія | Призначення |
-|---|---|---|
-| React | 18+ | UI-бібліотека |
-| Vite | 6+ | Збірник проєкту |
-| react-router-dom | 7+ | Клієнтська маршрутизація |
-| react-toastify | 11+ | Toast-сповіщення |
-| CSS Modules | — | Ізольована стилізація |
-| useContext | — | Глобальний стан |
-| localStorage | — | Персистентність даних |
+## 🖥️ Technical Stack
 
-## 🚀 Запуск проєкту
+| Technology | Version | Purpose |
+| :--- | :--- | :--- |
+| **React** | 18+ | Core UI library for component-based architecture |
+| **Vite** | 6+ | Fast next-generation frontend tooling and bundling |
+| **react-router-dom** | 7+ | Client-side routing and navigation |
+| **react-toastify** | 11+ | Smooth, non-blocking toast notifications |
+| **CSS Modules** | — | Isolated component styling to prevent global scope pollution |
+| **Context API** | — | Global state management for tracking booking sessions |
+| **localStorage** | — | Client-side data persistence for storing booked tickets |
 
-### Передумови
-- Node.js LTS (18 або 20+)
-- npm 9+
+---
 
-### Встановлення та запуск
+## ✨ Core Functionality & Features
 
-```bash
-# Клонувати репозиторій
-git clone <your-github-url>
-cd railway-WEB-project
+The development was structured into two core evolutionary phases to ensure scalability:
 
-# Встановити залежності
-npm install
+### 🔍 Phase 1: Search, Filter & Discovery Engine
+* **Comprehensive Route Database:** Includes 8 pre-configured train routes across major Ukrainian destinations with real-time dynamic data.
+* **Smart Search:** Instant search functionality filtering by train number, departure city, or arrival station.
+* **Advanced Multi-Filtering:** Quick filters by origin, destination, and exact travel date.
+* **Live Availability Tracker:** Real-time seat counter updates for each specific train ride.
+* **Accessibility (A11y):** Built using semantic HTML and complete ARIA attributes for screen-reader compatibility.
 
-# Запустити dev-сервер
-npm run dev
+### 🎫 Phase 2: Interactive Seating Matrix & Reservation
+* **WagonSelector:** Dynamic tabs allowing users to switch seamlessly between different wagon classes (Coupe, Berth/Platskart, De Luxe/CB).
+* **Interactive SeatMap:** A high-fidelity interactive grid with precise color-coding animations:
+  * 🟢 **Available:** Ready for selection.
+  * 🔵 **Selected:** Features a smooth, pulsing micro-animation.
+  * 🔴 **Occupied:** Hard-disabled and locked out.
+* **Smart BookingForm:** Lightweight passenger checkout form featuring real-time input validation (Full Name, Phone, and Email formats).
+* **Live Cost Calculator:** Dynamically recalculates total checkout prices based on chosen seat tiers and counts.
+* **Feedback System:** Immediate feedback via animated Toast notifications upon successful order placements.
+* **Data Persistence:** Full CRUD operations mirrored instantly to `localStorage` to save user bookings across page reloads.
+
+---
+
+## 📁 Project Architecture
+
+```text
+src/
+├── components/
+│   ├── TrainCard.jsx          # Individual train card with route & call-to-action
+│   ├── TrainCard.module.css
+│   ├── TrainList.jsx          # Grid container for train cards with empty-states
+│   ├── TrainList.module.css
+│   ├── WagonSelector.jsx      # Tab switching engine for wagon classes
+│   ├── WagonSelector.module.css
+│   ├── SeatMap.jsx            # Interactive matrix for live seat selection
+│   ├── SeatMap.module.css
+│   ├── BookingForm.jsx        # Validation-ready passenger checkout form
+│   └── BookingForm.module.css
+├── context/
+│   └── BookingContext.jsx     # Centralized global booking state provider
+├── data/
+│   └── trains.js              # Mock database for train routes (8 destinations)
+├── pages/
+│   ├── Home.jsx               # Main Search & Discovery dashboard
+│   ├── Home.module.css
+│   ├── Booking.jsx            # Dedicated checkout & wagon schema page
+│   └── Booking.module.css
+├── services/
+│   └── BookingService.js      # LocalStorage wrapper handling persistence
+├── App.jsx                    # Global routing, core providers, and entry layout
+└── main.jsx                   # Application bootstrap mount point
 ```
 
-Застосунок буде доступний за адресою: **http://localhost:5173**
+---
 
-### Production збірка
+## 🎨 UI/UX Design Standards
+* **Themed Color Palette:** High-contrast dark theme inspired by modern railway applications (Deep railway blues paired with signature `#FFC800` amber accents).
+* **Modern Effects:** Clean Glassmorphism styling utilized on search panels to create depth.
+* **Micro-interactions:** Interactive hover states, active transitions, and responsive cards designed using a **Mobile-First** layout approach.
 
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+* **Node.js LTS** (v18 or v20+)
+* **npm** (v9+)
+
+### Installation & Local Setup
+
+1. **Clone the repository:**
+```bash
+git clone [https://github.com/Thywyth/railway-WEB-project.git](https://github.com/Thywyth/railway-WEB-project.git)
+cd railway-WEB-project
+```
+
+2. **Install project dependencies:**
+```bash
+npm install
+```
+
+3. **Launch the development server:**
+```bash
+npm run dev
+```
+*The application will boot and run locally at:* `http://localhost:5173`
+
+### Production Deployment
+To build and preview the optimized production build locally:
 ```bash
 npm run build
 npm run preview
 ```
 
-## 📁 Структура проєкту
+---
 
-```
-src/
-├── components/
-│   ├── TrainCard.jsx          # Картка потяга з маршрутом і кнопкою вибору
-│   ├── TrainCard.module.css
-│   ├── TrainList.jsx          # Список карток з empty-state
-│   ├── TrainList.module.css
-│   ├── WagonSelector.jsx      # Таби для вибору вагона
-│   ├── WagonSelector.module.css
-│   ├── SeatMap.jsx            # Інтерактивна схема місць
-│   ├── SeatMap.module.css
-│   ├── BookingForm.jsx        # Форма пасажира з валідацією
-│   └── BookingForm.module.css
-├── context/
-│   └── BookingContext.jsx     # Глобальний стан бронювання
-├── data/
-│   └── trains.js              # Мок-дані потягів (8 маршрутів)
-├── pages/
-│   ├── Home.jsx               # Головна: пошук і список рейсів
-│   ├── Home.module.css
-│   ├── Booking.jsx            # Сторінка бронювання
-│   └── Booking.module.css
-├── services/
-│   └── BookingService.js      # CRUD з localStorage
-├── App.jsx                    # Роутинг і провайдери
-└── main.jsx                   # Точка входу
-```
-
-## ✨ Функціонал
-
-### Лабораторна 9 — Список потягів
-- 📋 **8 рейсів** по всій Україні з детальною інформацією
-- 🔍 **Пошук** за номером потяга, містом відправлення/прибуття
-- 🗂️ **Фільтри** за містом відправлення, містом призначення та датою
-- 📊 **Лічильник** вільних місць на кожному рейсі
-- ♿ Семантична HTML-розмітка та ARIA-атрибути
-
-### Лабораторна 10 — Бронювання місць
-- 🚃 **WagonSelector** — вибір вагона (Купе, Плацкарт, СВ, Люкс)
-- 💺 **SeatMap** — інтерактивна сітка місць із кольоровим кодуванням:
-  - 🟢 Вільне — можна вибрати
-  - 🔵 Обране — пульсуюча анімація
-  - 🔴 Зайняте — недоступне
-- 📝 **BookingForm** — валідація ім'я, телефону та email
-- 💰 **Підсумок вартості** перед бронюванням
-- 🔔 **Toast-сповіщення** при успішному бронюванні
-- 💾 **localStorage** — збереження всіх бронювань
-
-## 🎨 Дизайн
-
-- Темна кольорова схема у залізничному стилі (темно-сині тони, жовтий акцент #FFC800)
-- Glassmorphism-ефекти для пошукової панелі
-- Hover-ефекти та micro-animations на картках і кнопках
-- Повністю адаптивний (mobile-first)
-
-## 👤 Автор
-
-Студента групи ФЕІ-27  **Ціздина Романа**
-Дисципліна: Веб-програмування на стороні клієнта
-Лабораторні роботи 9–10
+## 👤 Author
+* **Roman Tsizdyn** — Frontend Developer
+* GitHub: [@Thywyth](https://github.com/Thywyth)
